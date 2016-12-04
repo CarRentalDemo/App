@@ -60,21 +60,6 @@ angular
         controller: 'BookingEntityCtrl',
         controllerAs: 'bookingEntity'
       })
-      .when('/cars-list', {
-        templateUrl: 'views/cars-list.html',
-        controller: 'CarsListCtrl',
-        controllerAs: 'carsList'
-      })
-      .when('/car-entity', {
-        templateUrl: 'views/car-entity.html',
-        controller: 'CarEntityCtrl',
-        controllerAs: 'carEntity'
-      })
-      .when('/car-entity/:id', {
-        templateUrl: 'views/car-entity.html',
-        controller: 'CarEntityCtrl',
-        controllerAs: 'carEntity'
-      })
       .when('/rent-entity', {
         templateUrl: 'views/rent-entity.html',
         controller: 'RentEntityCtrl',
