@@ -1,1 +1,43 @@
-<p>This is the clients-list view.</p>
+<h1>Clients</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/client-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>
+
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="client in $data">
+        <td title="'Full Name'" filter="{ FullName: 'text'}" sortable="'FullName'">
+            {{client.FullName}}
+        </td>
+        <td title="'Phones'" filter="{ Phones: 'text'}" sortable="'Phones'">
+            {{client.Phones}}
+        </td>
+        <td title="'Insurance Number'" filter="{ 'InsuranceNumber': 'text'}" sortable="'InsuranceNumber'">
+            {{client.InsuranceNumber}}
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a type="button" class="btn btn-default" ng-href="#/client-entity/{{client.Id}}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <button type="button" class="btn btn-default" ng-click="deleteRecord(client.Id)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/client-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>

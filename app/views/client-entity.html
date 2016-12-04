@@ -1,1 +1,40 @@
-<p>This is the client-entity view.</p>
+<h1>Client</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/clients-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Full Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Full Name" ng-model="model.FullName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phones</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Phones" ng-model="model.Phones">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Insurance Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Insurance Number" ng-model="model.InsuranceNumber">
+    </div>
+  </div>
+</form>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/clients-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
