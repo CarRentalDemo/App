@@ -25,8 +25,8 @@ angular.module('carRentalAppApp')
 
     $scope.refreshData = function() {
       odata = o('CarTypes');
-      
-      $busy.during(odata.get()).then(function(response){
+
+      $busy.during(odata.orderBy('Name').get()).then(function(response){
         self.tableData = response.data;
         $scope.tableParams.reload();
       });

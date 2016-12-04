@@ -16,6 +16,9 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- build:css(.tmp) styles/datepicker.css -->
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+    <!-- endbuild -->
   </head>
   <body ng-app="carRentalAppApp">
     <!--[if lte IE 8]>
@@ -62,6 +65,8 @@
       </div>
     </div>
 
+    <div ng-helper-busy></div>
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -79,7 +84,14 @@
     <script src="bower_components/o.js/o.js"></script>
     <script src="bower_components/ng-table/dist/ng-table.js"></script>
     <script src="bower_components/ngHelperBusy/ngHelperBusy.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/datepicker.js -->
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+    <script src="bower_components/angular-date-time-input/src/dateTimeInput.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

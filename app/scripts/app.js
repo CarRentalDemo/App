@@ -19,7 +19,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngTable',
-    'ngHelperBusy'
+    'ngHelperBusy',
+    'ui.bootstrap.datetimepicker',
+    'ui.dateTimeInput'
   ])
   .config(function ($routeProvider) {
     $routeProvider

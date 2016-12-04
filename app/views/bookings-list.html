@@ -1,1 +1,46 @@
-<p>This is the bookings-list view.</p>
+<h1>Bookings</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/booking-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>
+
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="booking in $data">
+        <td title="'Date From'" filter="{ DateFrom: 'text'}" sortable="'DateFrom'">
+            {{booking.DateFrom}}
+        </td>
+        <td title="'Date To'" filter="{ DateTo: 'text'}" sortable="'DateTo'">
+            {{booking.DateTo}}
+        </td>
+        <td title="'CarType'" filter="{ 'CarType.Name': 'text'}" sortable="'CarType.Name'">
+            {{booking.CarType.Name}}
+        </td>
+        <td title="'Client'" filter="{ 'Client.FullName': 'text'}" sortable="'Client.FullName'">
+            {{booking.Client.FullName}} ({{booking.Client.Phones}})
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a type="button" class="btn btn-default" ng-href="#/booking-entity/{{carType.Id}}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <button type="button" class="btn btn-default" ng-click="deleteRecord(carType.Id)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/booking-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>
