@@ -11,7 +11,7 @@ angular.module('carRentalAppApp')
       return self.tableData;
     };
 
-    $scope.tableParams = new NgTableParams({}, { getData: self.getData });
+    $scope.tableParams = new NgTableParams({}, { getData: self.getData, filterDelay: 1 });
 
     $scope.deleteRecord = function(id) {
       if (!confirm('Are you sure want to delete it?')) {
