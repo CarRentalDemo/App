@@ -17,7 +17,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngTable',
+    'ngHelperBusy'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -104,4 +106,9 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function(config){
+    o().config({
+      endpoint: config.apiUrl + '/odata'
+    });
   });

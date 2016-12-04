@@ -1,1 +1,49 @@
-<p>This is the car-types-list view.</p>
+<h1>Car Types</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/car-type-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>
+
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="carType in $data">
+        <td title="'Name'" filter="{ Name: 'text'}" sortable="'Name'">
+            {{carType.Name}}
+        </td>
+        <td title="'Day Price'" filter="{ DayPrice: 'number'}" sortable="'DayPrice'">
+            {{carType.DayPrice}}
+        </td>
+        <td title="'Day Multiplier'" filter="{ DayMultiplier: 'number'}" sortable="'DayMultiplier'">
+            {{carType.DayMultiplier}}
+        </td>
+        <td title="'Kilometer Price'" filter="{ KilometerPrice: 'number'}" sortable="'KilometerPrice'">
+            {{carType.KilometerPrice}}
+        </td>
+        <td title="'Kilometer Multiplier'" filter="{ KilometerMultiplier: 'number'}" sortable="'KilometerMultiplier'">
+            {{carType.KilometerMultiplier}}
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a type="button" class="btn btn-default" ng-href="#/car-type-entity/{{carType.Id}}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <button type="button" class="btn btn-default" ng-click="deleteRecord(carType.Id)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="refreshData()">
+    <i class="glyphicon glyphicon-refresh"></i> Refresh
+  </button>
+  <a type="button" class="btn btn-default" href="#/car-type-entity">
+    <i class="glyphicon glyphicon-plus"></i> Add
+  </a>
+</div>

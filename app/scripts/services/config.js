@@ -9,5 +9,7 @@
  */
 angular.module('carRentalAppApp')
   .service('config', function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    var self = this;
+
+    self.apiUrl = 'http://localhost:3100';
   });
