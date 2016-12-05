@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name carRentalAppApp.controller:RentCloseEntityCtrl
- * @description
- * # RentCloseEntityCtrl
- * Controller of the carRentalAppApp
- */
 angular.module('carRentalAppApp')
   .controller('RentCloseEntityCtrl', function ($scope, $busy, $routeParams, $location, $http, config) {
     var self = this;
@@ -40,7 +33,6 @@ angular.module('carRentalAppApp')
       }
 
       $busy.during($http.post(config.apiUrl + '/api/Pricing/FinalPrice', model)).then(function(response){
-        console.log(response);
         $scope.model.FinalPrice = response.data;
       });
     };
