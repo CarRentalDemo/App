@@ -64,16 +64,13 @@ angular.module('carRentalAppApp')
     if (self.id) {
       $scope.isNewClient = false;
 
-      promises.push(odata.find(self.id).get());
+      promises.push(odata.find(self.id).expand('Booking($expand=CarType,Client)').get());
     } else {
       $scope.isNewClient = true;  
     }
 
     $busy.during(Q.all(promises)).then(function(responses){
-      $scope.bookings = responses[0].data.map(function(booking){
-        booking.description = booking.CarType.Name + ' car from ' + moment(booking.DateFrom).format('YYYY-MM-DD HH:mm') + ' to ' + moment(booking.DateTo).format('YYYY-MM-DD HH:mm') + ' for ' + booking.Client.FullName
-        return booking;
-      });
+      var bookings = responses[0].data;
 
       $scope.clients = responses[1].data;
 
@@ -83,7 +80,14 @@ angular.module('carRentalAppApp')
         $scope.model = responses[3].data;
         delete $scope.model['@odata.context'];
         delete $scope.model.Id;
+
+        bookings.unshift($scope.model.Booking);
       }
+
+      $scope.bookings = bookings.map(function(booking){
+        booking.description = booking.CarType.Name + ' car from ' + moment(booking.DateFrom).format('YYYY-MM-DD HH:mm') + ' to ' + moment(booking.DateTo).format('YYYY-MM-DD HH:mm') + ' for ' + booking.Client.FullName
+        return booking;
+      });
 
       if (self.bookingId) {
         $scope.model.BookingId = parseInt(self.bookingId);
