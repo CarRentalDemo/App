@@ -4,6 +4,7 @@ angular.module('carRentalAppApp')
   .controller('RentEntityCtrl', function ($routeParams, $scope, $busy, $location, common) {
     var self = this;
     self.id = $routeParams.id;
+    self.bookingId = $routeParams.bookingId;
 
     var odata = o('Rents');
 
@@ -16,7 +17,7 @@ angular.module('carRentalAppApp')
     };
 
     var promises = [];
-    promises.push(o('Bookings').filter('DateTo ge ' + new Date().toISOString()).expand('CarType,Client').orderBy('DateFrom,DateTo').get());
+    promises.push(o('BookingsForRent').filter('DateTo ge ' + new Date().toISOString()).expand('CarType,Client').orderBy('DateFrom,DateTo').get());
     promises.push(o('Clients').orderBy('FullName').get());
     promises.push(o('CarTypes').select('Id,Name').orderBy('Name').get());
 
@@ -82,6 +83,10 @@ angular.module('carRentalAppApp')
         $scope.model = responses[3].data;
         delete $scope.model['@odata.context'];
         delete $scope.model.Id;
+      }
+
+      if (self.bookingId) {
+        $scope.model.BookingId = parseInt(self.bookingId);
       }
     });
     
