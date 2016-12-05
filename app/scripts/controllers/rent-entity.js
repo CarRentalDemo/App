@@ -105,9 +105,6 @@ angular.module('carRentalAppApp')
           return item.Id == $scope.model.ClientId;
         })[0];
 
-        console.log(client);
-        console.log($scope.model.Client);
-
         if (client.FullName != $scope.model.Client.FullName
           || client.Phones != $scope.model.Client.Phones
           || client.InsuranceNumber != $scope.model.Client.InsuranceNumber) {
