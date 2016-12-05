@@ -52,14 +52,13 @@ angular.module('carRentalAppApp')
         delete $scope.model.Client;
       }
 
-      console.log($scope.model);
-
       if (self.id) {
         $busy.during(odata.find(self.id).put($scope.model).save()).then(function(response) {
           $location.path('/bookings-list');
         })
       } else {
         $busy.during(odata.post($scope.model).save()).then(function(response) {
+          alert('Booking code is ' + response.data.Id + '.');
           $location.path('/bookings-list');
         })
       }
