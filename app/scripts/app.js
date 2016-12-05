@@ -90,6 +90,16 @@ angular
         controller: 'ClientEntityCtrl',
         controllerAs: 'clientEntity'
       })
+      .when('/settings-list', {
+        templateUrl: 'views/settings-list.html',
+        controller: 'SettingsListCtrl',
+        controllerAs: 'settingsList'
+      })
+      .when('/setting-entity', {
+        templateUrl: 'views/setting-entity.html',
+        controller: 'SettingEntityCtrl',
+        controllerAs: 'settingEntity'
+      })
       .otherwise({
         redirectTo: '/'
       });
