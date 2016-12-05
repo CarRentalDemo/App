@@ -70,6 +70,11 @@ angular
         controller: 'RentEntityCtrl',
         controllerAs: 'rentEntity'
       })
+      .when('/rent-from-booking/:bookingId', {
+        templateUrl: 'views/rent-entity.html',
+        controller: 'RentEntityCtrl',
+        controllerAs: 'rentEntity'
+      })
       .when('/rents-list', {
         templateUrl: 'views/rents-list.html',
         controller: 'RentsListCtrl',
@@ -89,6 +94,11 @@ angular
         templateUrl: 'views/client-entity.html',
         controller: 'ClientEntityCtrl',
         controllerAs: 'clientEntity'
+      })
+      .when('/rent-close-entity/:id', {
+        templateUrl: 'views/rent-close-entity.html',
+        controller: 'RentCloseEntityCtrl',
+        controllerAs: 'rentCloseEntity'
       })
       .when('/settings-list', {
         templateUrl: 'views/settings-list.html',
