@@ -11,11 +11,11 @@
 
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="rent in $data">
-        <td title="'Date From'" filter="{ DateFrom: 'text'}" sortable="'DateFrom'">
-            {{rent.DateFrom}}
+        <td title="'Date From'" filter="{ dateFromString: 'text'}" sortable="'dateFromString'">
+            {{rent.dateFromString}}
         </td>
-        <td title="'Date To'" filter="{ DateTo: 'text'}" sortable="'DateTo'">
-            {{rent.DateTo}}
+        <td title="'Date To'" filter="{ dateToString: 'text'}" sortable="'dateToString'">
+            {{rent.dateToString}}
         </td>
         <td title="'Car'" sortable="'CarType.Name'">
             {{rent.CarType.Name}} ({{rent.RegistrationNumber}})
@@ -30,7 +30,7 @@
             {{rent.FinalPrice}}
         </td>
         <td>
-            <div class="btn-group" role="group">
+            <div ng-if="!rent.FinalPrice" class="btn-group" role="group">
                 <a type="button" class="btn btn-default" ng-href="#/rent-close-entity/{{rent.Id}}">
                     <i class="glyphicon glyphicon-lock"></i>
                 </a>
@@ -40,6 +40,9 @@
                 <button type="button" class="btn btn-default" ng-click="deleteRecord(rent.Id)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
+            </div>
+            <div ng-if="rent.FinalPrice">
+                Closed
             </div>
         </td>
     </tr>

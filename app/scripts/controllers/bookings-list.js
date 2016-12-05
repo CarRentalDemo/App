@@ -28,8 +28,12 @@ angular.module('carRentalAppApp')
       
       $busy.during(odata.expand('CarType,Client,Rents').orderBy('DateFrom,DateTo').get()).then(function(response){
         self.tableData = response.data.map(function(item) {
-          item.isRentAvailable = Date.parse(item.DateTo) >= new Date() && item.Rents.length == 0;
-          item.isDeleteAvailable = item.Rents.length == 0;
+          item.isRented = item.Rents.length != 0;
+          item.isPastDue = Date.parse(item.DateTo) < new Date();
+          item.isRentAvailable = !item.isPastDue && !item.isRented;
+          
+          item.dateFromString = moment(item.DateFrom).format('YYYY-MM-DD HH:mm');
+          item.dateToString = moment(item.DateTo).format('YYYY-MM-DD HH:mm');
           return item;
         });
         $scope.tableParams.reload();

@@ -27,7 +27,12 @@ angular.module('carRentalAppApp')
       odata = o('Rents');
       
       $busy.during(odata.expand('CarType,Booking').orderBy('DateFrom,DateTo').get()).then(function(response){
-        self.tableData = response.data;
+        self.tableData = response.data.map(function(item) {
+          item.dateFromString = moment(item.DateFrom).format('YYYY-MM-DD HH:mm');
+          item.dateToString = item.DateTo ? moment(item.DateTo).format('YYYY-MM-DD HH:mm') : '';
+          return item;
+        });
+
         $scope.tableParams.reload();
       });
     }

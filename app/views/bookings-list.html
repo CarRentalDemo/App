@@ -14,11 +14,11 @@
         <td title="'Booking Id'" filter="{ Id: 'text'}" sortable="'Id'">
             {{booking.Id}}
         </td>
-        <td title="'Date From'" filter="{ DateFrom: 'text'}" sortable="'DateFrom'">
-            {{booking.DateFrom}}
+        <td title="'Date From'" filter="{ dateFromString: 'text'}" sortable="'dateFromString'">
+            {{booking.dateFromString}}
         </td>
-        <td title="'Date To'" filter="{ DateTo: 'text'}" sortable="'DateTo'">
-            {{booking.DateTo}}
+        <td title="'Date To'" filter="{ dateToString: 'text'}" sortable="'dateToString'">
+            {{booking.dateToString}}
         </td>
         <td title="'CarType'" sortable="'CarType.Name'">
             {{booking.CarType.Name}}
@@ -27,14 +27,22 @@
             {{booking.Client.FullName}} ({{booking.Client.Phones}})
         </td>
         <td>
+            <div ng-if="booking.isPastDue || booking.isRented">
+                <span ng-if="booking.isPastDue">
+                    Booking is past due.
+                </span>
+                <span ng-if="booking.isRented">
+                    Car is rented.
+                </span>
+            </div>
             <div class="btn-group" role="group">
-                <a ng-show="booking.isRentAvailable" type="button" class="btn btn-default" ng-href="#/rent-from-booking/{{booking.Id}}">
+                <a ng-if="booking.isRentAvailable" type="button" class="btn btn-default" ng-href="#/rent-from-booking/{{booking.Id}}">
                     <i class="glyphicon glyphicon-road"></i>
                 </a>
-                <a type="button" class="btn btn-default" ng-href="#/booking-entity/{{booking.Id}}">
+                <a ng-if="!booking.isRented" type="button" class="btn btn-default" ng-href="#/booking-entity/{{booking.Id}}">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </a>
-                <button ng-show="booking.isDeleteAvailable" type="button" class="btn btn-default" ng-click="deleteRecord(booking.Id)">
+                <button ng-if="!booking.isRented" type="button" class="btn btn-default" ng-click="deleteRecord(booking.Id)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
             </div>
