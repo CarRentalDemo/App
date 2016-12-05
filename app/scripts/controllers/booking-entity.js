@@ -35,7 +35,7 @@ angular.module('carRentalAppApp')
       });      
     }
 
-    Q.all(promises).then(function(responses){
+    $busy.during(Q.all(promises)).then(function(responses){
       $scope.carTypes = responses[0].data;
 
       if (self.id) {
