@@ -1,22 +1,14 @@
 'use strict';
 
 angular.module('carRentalAppApp')
-  .controller('SettingsListCtrl', function ($scope, $busy, config) {
+  .controller('SettingsListCtrl', function ($scope, $busy, config, $http) {
     var self = this;
 
     $scope.model = {};
 
     $scope.refreshData = function() {
-      $busy.beBusy();
-      $.ajax({
-        accepts: 'application/json',
-        contentType: 'application/json',
-        method: 'GET',
-        url: config.apiUrl + "/api/Settings",
-      }).done(function(data) {
-        $busy.beFree();
-        $scope.model = data;
-        $scope.$apply();
+      $busy.during($http.get(config.apiUrl + '/api/Settings')).then(function(response){
+        $scope.model = response.data;
       });
     }
 

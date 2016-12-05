@@ -1,35 +1,18 @@
 'use strict';
 
 angular.module('carRentalAppApp')
-  .controller('SettingEntityCtrl', function ($scope, $busy, $location, config) {
+  .controller('SettingEntityCtrl', function ($scope, $busy, $location, config, $http) {
     var self = this;
 
     $scope.model = {};
     
-    $busy.beBusy();
-    $.ajax({
-      accepts: 'application/json',
-      contentType: 'application/json',
-      method: 'GET',
-      url: config.apiUrl + "/api/Settings",
-    }).done(function(data) {
-      $busy.beFree();
-      $scope.model = data;
-      $scope.$apply();
+    $busy.during($http.get(config.apiUrl + '/api/Settings')).then(function(response){
+      $scope.model = response.data;
     });
 
     $scope.saveData = function() {
-      $busy.beBusy();
-      $.ajax({
-        accepts: 'application/json',
-        contentType: 'application/json',
-        method: 'PUT',
-        data: JSON.stringify($scope.model),
-        url: config.apiUrl + "/api/Settings",
-      }).done(function(data) {
-        $busy.beFree();
+      $busy.during($http.put(config.apiUrl + '/api/Settings', $scope.model)).then(function(response){
         $location.path('/settings-list');
-        $scope.$apply();
       });
     };
   });
