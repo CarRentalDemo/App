@@ -1,0 +1,101 @@
+<h1>Rent</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/rents-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Booking</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" readonly="readonly" ng-model="model.Booking.description">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">DateFrom</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" readonly="readonly" ng-model="model.DateFrom">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Date To</label>
+    <div class="col-sm-10">
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="aDateTo" role="button" data-toggle="dropdown">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="model.DateTo" data-date-time-input="YYYY-MM-DD HH:mm">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <datetimepicker ng-model="model.DateTo" data-datetimepicker-config="{ dropdownSelector: '#aDateTo' }"/>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Registration Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" readonly="readonly" ng-model="model.RegistrationNumber">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Initial Mileage</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" readonly="readonly" ng-model="model.InitialMileage">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Final Mileage</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" placeholder="Final Mileage" ng-model="model.FinalMileage">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Final Price</label>
+    <div class="col-sm-8">
+      <input type="number" class="form-control" readonly="readonly" ng-model="model.FinalPrice">
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-default col-sm-12" ng-click="getFinalPrice()">Get price</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Car Type</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" readonly="readonly" ng-model="model.CarType.Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Full Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" readonly="readonly" ng-model="model.FullName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phones</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" readonly="readonly" ng-model="model.Phones">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Insurance Number</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" readonly="readonly" ng-model="model.InsuranceNumber">
+    </div>
+  </div>
+</form>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/rents-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
