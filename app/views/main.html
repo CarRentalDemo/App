@@ -3,4 +3,22 @@
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman">
   </p>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <input type="number" class="form-control" ng-model="id">
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-group col-sm-6 col-sm-offset-3" role="group">
+      <a type="button" class="btn btn-default col-sm-4" href="#/booking-entity">
+        <i class="glyphicon glyphicon-plus"></i> New booking
+      </a>
+      <button type="button" class="btn btn-default col-sm-4" ng-click="gotoRentOpen()">
+        <i class="glyphicon glyphicon-road"></i> Rent by booking ID
+      </button>
+      <button type="button" class="btn btn-default col-sm-4" ng-click="gotoRentClose()">
+        <i class="glyphicon glyphicon-lock"></i> Close by booking ID
+      </button>
+    </div>
+  </div>
 </div>
