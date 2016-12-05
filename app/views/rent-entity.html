@@ -1,1 +1,91 @@
-<p>This is the rent-entity view.</p>
+<h1>Rent</h1>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/rents-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Booking</label>
+    <div class="col-sm-10">
+      <select class="form-control" ng-model="model.BookingId" ng-options="booking.Id as booking.description for booking in bookings"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Date From</label>
+    <div class="col-sm-10">
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="aDateFrom" role="button" data-toggle="dropdown">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="model.DateFrom" data-date-time-input="YYYY-MM-DD HH:mm">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <datetimepicker ng-model="model.DateFrom" data-datetimepicker-config="{ dropdownSelector: '#aDateFrom' }"/>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Initial Mileage</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" placeholder="Initial Mileage" ng-model="model.InitialMileage">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Car Type</label>
+    <div class="col-sm-10">
+      <select class="form-control" ng-model="model.CarTypeId" ng-options="type.Id as type.Name for type in carTypes"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Create new client?</label>
+    <div class="col-sm-10">
+      <input type="checkbox" ng-model="isNewClient">
+    </div>
+  </div>
+  <div class="form-group" ng-hide="isNewClient">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+      <select class="form-control" ng-model="model.ClientId" ng-options="client.Id as client.FullName for client in clients"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Full Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Full Name" ng-model="model.Client.FullName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Phones</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Phones" ng-model="model.Client.Phones">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Insurance Number</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Insurance Number" ng-model="model.Client.InsuranceNumber">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default" ng-click="saveData()">
+    <i class="glyphicon glyphicon-floppy-disk"></i> Save
+  </button>
+  <a type="button" class="btn btn-default" href="#/rents-list">
+    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+  </a>
+</div>
