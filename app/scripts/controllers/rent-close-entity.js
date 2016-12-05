@@ -38,7 +38,13 @@ angular.module('carRentalAppApp')
     };
 
     $scope.saveData = function() {
-      $busy.during(odata.find(self.id).put($scope.model).save()).then(function(response) {
+      var model = {
+        DateTo: $scope.model.DateTo,
+        FinalMileage: $scope.model.FinalMileage,
+        FinalPrice: $scope.model.FinalPrice
+      };
+
+      $busy.during(o('Rents').find(self.id).put(model).save()).then(function(response) {
         $location.path('/rents-list');
       })
     };
