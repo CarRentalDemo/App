@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('carRentalAppApp')
-  .controller('BookingsListCtrl', function ($scope, NgTableParams, $busy) {
+  .controller('BookingsListCtrl', function ($scope, $busy, common) {
     var self = this;
 
     var odata = o('Bookings');
@@ -11,7 +11,7 @@ angular.module('carRentalAppApp')
       return self.tableData;
     };
 
-    $scope.tableParams = new NgTableParams({}, { getData: self.getData, filterDelay: 1 });
+    $scope.tableParams = common.getTableParams(self.getData);
 
     $scope.deleteRecord = function(id) {
       if (!confirm('Are you sure want to delete it?')) {
@@ -26,8 +26,12 @@ angular.module('carRentalAppApp')
     $scope.refreshData = function() {
       odata = o('Bookings');
       
-      $busy.during(odata.expand('CarType,Client').orderBy('DateFrom,DateTo').get()).then(function(response){
-        self.tableData = response.data;
+      $busy.during(odata.expand('CarType,Client,Rents').orderBy('DateFrom,DateTo').get()).then(function(response){
+        self.tableData = response.data.map(function(item) {
+          item.isRentAvailable = Date.parse(item.DateTo) >= new Date() && item.Rents.length == 0;
+          item.isDeleteAvailable = item.Rents.length == 0;
+          return item;
+        });
         $scope.tableParams.reload();
       });
     }

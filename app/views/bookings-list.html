@@ -11,24 +11,30 @@
 
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="booking in $data">
+        <td title="'Booking Id'" filter="{ Id: 'text'}" sortable="'Id'">
+            {{booking.Id}}
+        </td>
         <td title="'Date From'" filter="{ DateFrom: 'text'}" sortable="'DateFrom'">
             {{booking.DateFrom}}
         </td>
         <td title="'Date To'" filter="{ DateTo: 'text'}" sortable="'DateTo'">
             {{booking.DateTo}}
         </td>
-        <td title="'CarType'" filter="{ 'CarType.Name': 'text'}" sortable="'CarType.Name'">
+        <td title="'CarType'" sortable="'CarType.Name'">
             {{booking.CarType.Name}}
         </td>
-        <td title="'Client'" filter="{ 'Client.FullName': 'text'}" sortable="'Client.FullName'">
+        <td title="'Client'" sortable="'Client.FullName'">
             {{booking.Client.FullName}} ({{booking.Client.Phones}})
         </td>
         <td>
             <div class="btn-group" role="group">
+                <a ng-show="booking.isRentAvailable" type="button" class="btn btn-default" ng-href="#/rent-from-booking/{{booking.Id}}">
+                    <i class="glyphicon glyphicon-road"></i>
+                </a>
                 <a type="button" class="btn btn-default" ng-href="#/booking-entity/{{booking.Id}}">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </a>
-                <button type="button" class="btn btn-default" ng-click="deleteRecord(booking.Id)">
+                <button ng-show="booking.isDeleteAvailable" type="button" class="btn btn-default" ng-click="deleteRecord(booking.Id)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
             </div>

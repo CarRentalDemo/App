@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('carRentalAppApp')
-  .controller('CarTypesListCtrl', function ($scope, NgTableParams, $busy) {
+  .controller('CarTypesListCtrl', function ($scope, common, $busy) {
     var self = this;
 
     var odata = o('CarTypes');
@@ -11,7 +11,7 @@ angular.module('carRentalAppApp')
       return self.tableData;
     };
 
-    $scope.tableParams = new NgTableParams({}, { getData: self.getData });
+    $scope.tableParams = common.getTableParams(self.getData);
 
     $scope.deleteRecord = function(id) {
       if (!confirm('Are you sure want to delete it?')) {
